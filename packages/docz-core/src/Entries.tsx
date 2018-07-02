@@ -96,7 +96,8 @@ export class Entries {
 
     const ignoreGlob = '!node_modules'
     const files: string[] = glob.sync(
-      Array.isArray(pattern) ? [...pattern, ignoreGlob] : [pattern, ignoreGlob]
+      Array.isArray(pattern) ? [...pattern, ignoreGlob] : [pattern, ignoreGlob],
+      { cwd: src, absolute: true }
     )
 
     const isEntry = async (file: string) => Entry.check(file)
